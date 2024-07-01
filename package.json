@@ -1,11 +1,14 @@
 {
-  "name": "node-starter",
-  "private": true,
+  "name": "era-reporter",
+  "version": "1.0.0",
+  "description": "Employee Engagement Score Reporter",
+  "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
     "xlsx": "^0.18.5"
   }
 }
