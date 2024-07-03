@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clover ERA Employee Sentiment Score</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 100px;
+        }
+        .header h1 {
+            margin: 10px 0;
+        }
+        .score-section {
+            display: flex;
+            justify-content: space-between;
+        }
+        .score-card {
+            flex: 1;
+            margin: 0 10px;
+            text-align: center;
+        }
+        .score-card h3 {
+            margin-bottom: 10px;
+        }
+        .score {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .score.very-low {
+            color: red;
+        }
+        .score.low {
+            color: orange;
+        }
+        .score.good {
+            color: yellow;
+        }
+        .score.very-good {
+            color: green;
+        }
+        .details-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .details-card {
+            flex: 1;
+            margin: 0 10px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .details-card h4 {
+            margin-bottom: 10px;
+        }
+        .details-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .details-card ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="ERA Logo">
+            <h1>Clover Era Employee Sentiment Score</h1>
+        </div>
+        <div class="score-section">
+            <div class="score-card">
+                <h3>Communication</h3>
+                <div class="score very-low">1.1</div>
+                <div>Very Low</div>
+            </div>
+            <div class="score-card">
+                <h3>Learning</h3>
+                <div class="score low">2.3</div>
+                <div>Low</div>
+            </div>
+            <div class="score-card">
+                <h3>Opportunity</h3>
+                <div class="score very-low">1.2</div>
+                <div>Very Low</div>
+            </div>
+            <div class="score-card">
+                <h3>Vulnerability</h3>
+                <div class="score good">3.3</div>
+                <div>Good</div>
+            </div>
+            <div class="score-card">
+                <h3>Enablement</h3>
+                <div class="score very-good">3.8</div>
+                <div>Very Good</div>
+            </div>
+            <div class="score-card">
+                <h3>Reflection</h3>
+                <div class="score very-low">1.3</div>
+                <div>Very Low</div>
+            </div>
+        </div>
+        <div class="details-section">
+            <div class="details-card">
+                <h4>Top Themes</h4>
+                <ul>
+                    <li>Lack of Enablement</li>
+                    <li>Grow Learnership Opps</li>
+                    <li>Time for Reflection</li>
+                    <li>Fear of Voicing Opinions</li>
+                    <li>Leadership Communication</li>
+                </ul>
+            </div>
+            <div class="details-card">
+                <h4>Top Recommendations</h4>
+                <ul>
+                    <li><strong>Time for Reflection:</strong> Implement scheduled reflection periods during work to discuss successes, challenges, and improvements, fostering a culture of continuous learning and adaptability among employees.</li>
+                    <li><strong>Grow Learnership Opportunities:</strong> Enhance learning programs with varied formats like mentorships, workshops, and cross-departmental training to stimulate continuous learning, collaboration, and exposure to external expertise.</li>
+                    <li><strong>Lack of Enablement:</strong> Address enablement by ensuring access to necessary tools and resources, streamlining communication channels, and regularly updating training and support systems to empower employee performance.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

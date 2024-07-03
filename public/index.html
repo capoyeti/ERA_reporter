@@ -4,47 +4,158 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Engagement Dashboard</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@latest"></script>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
-    .chart-container { display: flex; flex-wrap: wrap; justify-content: space-around; }
-    .chart { width: 200px; margin: 10px; }
-    #topThemes { width: 100%; height: 300px; }
+    body { 
+      font-family: Arial, sans-serif; 
+      max-width: 1400px; /* Increased from 1200px */
+      margin: 0 auto; 
+      padding: 20px 40px; /* Added horizontal padding */
+      background-color: #f9f9f9; 
+      color: #333; 
+    }
+    .header { 
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-start; /* Changed to space-between */
+      margin-bottom: 30px; 
+    }
+    .header h1 { 
+      margin: 0 80px 0 0;  /* created space between title and gauge */
+      font-size: 24px; 
+      font-weight: bold; 
+      color: #4A90E2; 
+    }
+    .gauge-title { 
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center; 
+    }
+    .chart-container { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+    }
+    .gauge-row { 
+      display: flex; 
+      justify-content: space-between;
+      flex-wrap: nowrap; 
+      margin-top: 20px; 
+      background: #fff; 
+      border-radius: 8px; 
+      padding: 20px; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .gauge-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 0 0 15%; /* Slightly reduced */
+      max-width: 15%; /* Slightly reduced */
+      padding: 10px;
+    }
+    .gauge { 
+      width: 100%;
+      max-width: 160px; /* Slightly reduced */
+    }
+    .gauge canvas { 
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+    }
+    .form-container {
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      margin-bottom: 40px; 
+    }
+    .form-container form {
+      display: flex; 
+      flex-direction: column; 
+      align-items: flex-start; 
+      width: 100%; 
+      max-width: 600px; 
+      background: #fff; 
+      padding: 20px; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    }
+    .form-container form input,
+    .form-container form textarea {
+      width: 100%; 
+      margin-bottom: 20px; 
+      padding: 10px; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+    }
+    .form-container form button {
+      padding: 10px 20px; 
+      background-color: #4A90E2; 
+      color: #fff; 
+      border: none; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      font-size: 16px; 
+    }
+    .form-container form button:hover {
+      background-color: #357ABD; 
+    }
+    .report-section {
+      display: flex; 
+      justify-content: space-between; 
+      margin-top: 20px; 
+      background: #fff; 
+      padding: 20px; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    }
+    .report-column {
+      width: 48%; 
+      padding: 20px; 
+      background: #fff; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    }
+    .report-column h2 {
+      margin-top: 0; 
+      font-size: 20px; 
+      font-weight: bold; 
+      color: #4A90E2; 
+    }
   </style>
 </head>
 <body>
-  <h1>Clover Era Employee Engagement Score</h1>
-  <div class="chart-container">
-    <div class="chart">
-      <canvas id="engagementScore"></canvas>
+  <div class="header">
+    <h1>Clover Era Employee Sentiment Score</h1>
+    <div id="summary-gauge" class="gauge"></div>
+  </div>
+  <div class="form-container">
+    <form id="data-form">
+      <label for="csv-file">CSV File:</label>
+      <input type="file" id="csv-file" name="csv-file" accept=".csv" required>
+      
+      <label for="text-left">Text Left:</label>
+      <textarea id="text-left" name="text-left" rows="4" required></textarea>
+      
+      <label for="text-right">Text Right:</label>
+      <textarea id="text-right" name="text-right" rows="4" required></textarea>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <h2 class="gauge-title">Clover ERA Health</h2>
+  <div id="charts-container" class="gauge-row"></div>
+  <div class="report-section">
+    <div id="report-left" class="report-column">
+      <h2>Top Themes</h2>
+      <p></p>
+    </div>
+    <div id="report-right" class="report-column">
+      <h2>Top Recommendations</h2>
+      <p></p>
     </div>
   </div>
-  
-  <h2>Clover ERA Health</h2>
-  <div class="chart-container">
-    <div class="chart">
-      <canvas id="communicationChart"></canvas>
-    </div>
-    <div class="chart">
-      <canvas id="learningChart"></canvas>
-    </div>
-    <div class="chart">
-      <canvas id="opportunityChart"></canvas>
-    </div>
-    <div class="chart">
-      <canvas id="vulnerabilityChart"></canvas>
-    </div>
-    <div class="chart">
-      <canvas id="enablementChart"></canvas>
-    </div>
-    <div class="chart">
-      <canvas id="reflectionChart"></canvas>
-    </div>
-  </div>
-
-  <h2>Top Themes</h2>
-  <canvas id="topThemes"></canvas>
-
   <script src="script.js"></script>
 </body>
 </html>
